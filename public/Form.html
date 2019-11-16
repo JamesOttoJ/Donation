@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Vue Test</title>
+    <link rel="stylesheet" href="stylesheets/Style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="shortcut icon" href="images/favicon.ico">-->
+
+    <!-- import the webpage's client-side javascript file -->
+
+  </head>
+  <body>
+    <h1>Hello</h1>
+    <form id="myform" action="/Donations" method="post" @submit.prevent="submit"><!---->
+      <input type="number" id="DonorID" placeholder="Donor ID"/>
+      <input type="text" id="CatagoryName" placeholder="Catagory Name"/>
+      <input type="number" id="DonationUnits" placeholder="Donation Units"/>
+      <input type="number" id="DonationTotalDollars" placeholder="Donation Total Dollars"/>
+      <input type="number" id="StoreID" placeholder="Store ID"/>
+      <button id="FormSubmit">Submit</button><!--type="submit" formaction"/Donations" formmethod"post"-->
+    </form>
+    <div id="tbl">
+
+    </div>
+  </body>
+  <script src="javascripts/Client.js"></script>
+  <script>
+  
+  </script>
+</html>

@@ -1,0 +1,25 @@
+html {
+    background-color: #13293d;
+}
+
+h1 {
+    color: #dddddd;
+    text-align: center;
+}
+
+h2,
+h3 {
+    color: #dddddd;
+}
+
+p,
+ul,
+ol {
+    color: #dddddd;
+    font-family: verdana;
+    font-size: 14px;
+}
+
+a {
+    color: #1a98e0;
+}
