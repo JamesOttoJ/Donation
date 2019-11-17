@@ -12,42 +12,41 @@ const button = document.getElementById('FormSubmit');
 button.addEventListener('click', function(event) {
     console.log('button was clicked');
     event.preventDefault();
-
-    console.log("Submit Called");
     // request the user from our app's sqlite database
-    const userRequest = new XMLHttpRequest();
+    const DonationPost = new XMLHttpRequest();
 
-    userRequest.open('post', '/Donations');
-    userRequest.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
-        // userRequest.onreadystatechange = function() {
+    DonationPost.open('post', '/Donations');
+    DonationPost.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+        // DonationPost.onreadystatechange = function() {
         //     if (this.readyState == 4 && this.status == 200) {
+        //         console.log("table post")
         //         var rows = JSON.parse(this.responseText);
         //         var tbl = "<table border=1>";
         //         tbl += "<thead><td>Donor ID</td><td>Category Name</td><td>Donation Units</td><td>Donation Total Dollars</td><td>Store ID</td></thead>";
         //         for (var i = 0; i < rows.length; i++) {
-        //             tbl += "<tr><td>" + rows[i].DonorID + "</td><td>" + rows[i].CatagoryName + "</td><td>" + rows[i].DonationUnits + "</td><td>" + rows[i].DonationTotalDollars + "</td><td>" + rows[i].StoreID + "</td></tr>";
+        //             tbl += "<tr><td>" + rows[i].DonorID + "</td><td>" + rows[i].CategoryName + "</td><td>" + rows[i].DonationUnits + "</td><td>" + rows[i].DonationTotalDollars + "</td><td>" + rows[i].StoreID + "</td></tr>";
         //             console.log('record:', JSON.stringify(rows[i]));
-        //         }
+        //         };
         //         tbl += "</table>";
+        //         console.log(tbl);
         //         document.getElementById("tbl").innerHTML = tbl;
-        //     }
+        //     };
         // };
-    userRequest.send(JSON.stringify({
+    DonationPost.send(JSON.stringify({
         'DonorID': document.getElementById("DonorID").value,
-        'CatagoryName': document.getElementById("CatagoryName").value,
+        'CategoryName': document.getElementById("CategoryName").value,
         'DonationUnits': document.getElementById("DonationUnits").value,
         'DonationTotalDollars': document.getElementById("DonationTotalDollars").value,
         'StoreID': document.getElementById("StoreID").value
     }));
 });
 
-
 /*new Vue({
     el: '#app',
     data: {
         form: {
             DonorID: 1,
-            CatagoryName: "",
+            CategoryName: "",
             DonationUnits: 23,
             DonationTotalDollars: 34,
             StoreID: 45

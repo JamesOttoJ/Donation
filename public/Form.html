@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Vue Test</title>
+    <title>Form Test</title>
     <link rel="stylesheet" href="stylesheets/Style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <meta charset="utf-8">
@@ -14,13 +14,16 @@
   </head>
   <body>
     <h1>Hello</h1>
-    <form id="myform" action="/Donations" method="post" @submit.prevent="submit"><!---->
+    <form id="myform"><!-- action="/Donations" method="post"-->
+      <div>
       <input type="number" id="DonorID" placeholder="Donor ID"/>
-      <input type="text" id="CatagoryName" placeholder="Catagory Name"/>
+      <input type="text" id="CategoryName" placeholder="Catagory Name"/>
       <input type="number" id="DonationUnits" placeholder="Donation Units"/>
       <input type="number" id="DonationTotalDollars" placeholder="Donation Total Dollars"/>
       <input type="number" id="StoreID" placeholder="Store ID"/>
+      </div><div>
       <button id="FormSubmit">Submit</button><!--type="submit" formaction"/Donations" formmethod"post"-->
+      </div>
     </form>
     <div id="tbl">
 

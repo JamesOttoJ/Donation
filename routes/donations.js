@@ -6,11 +6,11 @@ var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 var fs = require('fs');
 
-var dbFilePath = path.join(__dirname, '../db/DonationDatabase.sqlite3');
+var dbFilePath = path.join(__dirname, '/../db/DonationDatabase.sqlite3');
 var exists = fs.existsSync(dbFilePath);
-var db = new sqlite3.Database(dbFilePath);
+let db = new sqlite3.Database(dbFilePath, sqlite3.OPEN_READWRITE);
 
-router.use(express.static(path.join(__dirname, '../public/Donations.html')));
+router.use(express.static(path.join(__dirname, '/../public/Donations.html')));
 
 // router.post('/', function(req, res) {
 //     console.log('Got a POST request')
@@ -24,38 +24,52 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', jsonParser, function(req, res) {
-    console.log('Got a POST req');
-    res.send('Got a POST req');
-    console.log(req.body);
-    //    res.send('Looking for Table');
+    var dbFilePath = path.join(__dirname, '/../db/DonationDatabase.sqlite3');
+    var exists = fs.existsSync(dbFilePath);
+    let db = new sqlite3.Database(dbFilePath, sqlite3.OPEN_READWRITE);
 
+    console.log(req.body);
+    console.log('Got a POST req');
+    console.log(req.body.DonorID);
+    console.log(req.body.CategoryName);
+    console.log(req.body.DonationUnits);
+    console.log(req.body.DonationTotalDollars);
+    console.log(req.body.StoreID);
+    console.log("Done with req body.");
+    //    res.send('Looking for Table');
 
     // if the database does not exist, create it, otherwise print records to console
     if (!exists) {
+
         console.log("Table not found");
     } else {
         console.log("Table Found!");
-        insert(err, req);
+        db.run("create table TestTable(TestColumn text);");
+        insert(req);
     }
-    db.each('SELECT * from Donations', function(err, row) {
-        console.log('${row.DonorID} ${row.CatagoryName} ${row.DonationUnits} ${row.DonationTotalDollars} ${row.StoreID} ');
-    });
+    // db.all(sql, [], (rows) => {
+    //     rows.forEach((row) => {
+    //         console.log(row.name);
+    //     });
+    // });
     console.log("SQLite Command Processed");
+    db.close();
 });
 
 var insert = function(req) {
     console.log("Insert Called");
-    db.run('INSERT INTO Donations (DonorID, CatagoryName, DonationUnits, DonationTotalDollars, StoreID) VALUES (' +
-        req.body.DonorID +
-        ', ' + '"' +
-        req.body.CatagoryName + '"' +
-        ', ' +
-        req.body.DonationUnits +
-        ', ' +
-        req.body.DonationTotalDollars +
-        ', ' +
-        req.body.StoreID + ');');
-    console.log("Insert Finished");
+    // db.run("INSERT INTO Donations (DonorID, CategoryName, DonationUnits, DonationTotalDollars, StoreID) VALUES (" +
+    //     req.body.DonorID +
+    //     ", " + "'" +
+    //     req.body.CategoryName +
+    //     "'," +
+    //     req.body.DonationUnits +
+    //     ", " +
+    //     req.body.DonationTotalDollars +
+    //     ", " +
+    //     req.body.StoreID + ");");
+    // console.log("Insert Finished");
+    db.run("insert into TestTable values(TestInput);");
 }
 
 module.exports = router;

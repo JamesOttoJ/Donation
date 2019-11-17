@@ -55,43 +55,7 @@ app.use(function(err, req, res, next) {
 // });
 
 // https://www.npmjs.com/package/sqlite3
-//app.post('/Donations', function(req, res)
-// var insert = function(req) {
-//     console.log("Insert Called");
-//     db.run('INSERT INTO Donations (DonorID, CatagoryName, DonationUnits, DonationTotalDollars, StoreID) VALUES (' +
-//         req.body.DonorID +
-//         ', ' + '"' +
-//         req.body.CatagoryName + '"' +
-//         ', ' +
-//         req.body.DonationUnits +
-//         ', ' +
-//         req.body.DonationTotalDollars +
-//         ', ' +
-//         req.body.StoreID + ')');
-//     console.log("Insert Finished");
-// }
 
-// app.post('/Donations', jsonParser, function(req, res) {
-//     console.log(req.body)
-//     console.log('JS Post req');
-
-//     // if the database does not exist, create it, otherwise print records to console
-//     if (!exists) {
-//         console.log("Table not found");
-//     } else {
-//         console.log("Table Found!");
-//         insert(Request);
-//         console.log("Request Received");
-//     }
-//     db.each('SELECT * from Donations', function(row) {
-//         console.log("SQLite Command Processed")
-//         res.send('record:' + row);
-//     });
-// });
-
-//app.get('/Donations', function(req, res))
-
-//db.close();
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
