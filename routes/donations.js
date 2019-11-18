@@ -9,6 +9,7 @@ var fs = require('fs');
 var dbFilePath = path.join(__dirname, '/../db/DonationDatabase.sqlite3');
 var exists = fs.existsSync(dbFilePath);
 let db = new sqlite3.Database(dbFilePath, sqlite3.OPEN_READWRITE);
+let sql = "SELECT DonorID FROM Donations";
 
 router.use(express.static(path.join(__dirname, '/../public/Donations.html')));
 
@@ -44,32 +45,44 @@ router.post('/', jsonParser, function(req, res) {
         console.log("Table not found");
     } else {
         console.log("Table Found!");
-        db.run("create table TestTable(TestColumn text);");
-        insert(req);
+        db.serialize(() => {
+            //db.run("create table TestTable(TestColumn text);");
+            console.log("Database Created!");
+            insert(req);
+            console.log("Insert Processed");
+            // db.all("SELECT DonorID FROM Donations", (allRows) => {
+            //     allRows.forEach(row => {
+            //         console.log(row.DonorID);
+            //     });
+            //     callback(allRows);
+            // });
+            db.close((err) => {
+                if (err) {
+                    return console.error(err.message);
+                }
+                console.log("Closed database");
+            });
+        });
+        // db.run("create table TestTable(TestColumn text);");
+        // insert(req);
     }
-    // db.all(sql, [], (rows) => {
-    //     rows.forEach((row) => {
-    //         console.log(row.name);
-    //     });
-    // });
-    console.log("SQLite Command Processed");
-    db.close();
+    res.status(200).end();
 });
 
 var insert = function(req) {
     console.log("Insert Called");
-    // db.run("INSERT INTO Donations (DonorID, CategoryName, DonationUnits, DonationTotalDollars, StoreID) VALUES (" +
-    //     req.body.DonorID +
-    //     ", " + "'" +
-    //     req.body.CategoryName +
-    //     "'," +
-    //     req.body.DonationUnits +
-    //     ", " +
-    //     req.body.DonationTotalDollars +
-    //     ", " +
-    //     req.body.StoreID + ");");
-    // console.log("Insert Finished");
-    db.run("insert into TestTable values(TestInput);");
+    db.run("INSERT INTO Donations (DonorID, CategoryName, DonationUnits, DonationTotalDollars, StoreID) VALUES (" +
+        req.body.DonorID +
+        ", '" +
+        req.body.CategoryName +
+        "', " +
+        req.body.DonationUnits +
+        ", " +
+        req.body.DonationTotalDollars +
+        ", " +
+        req.body.StoreID + ");");
+    console.log("Insert Finished");
+    //db.run("insert into TestTable values('TestInput');");
 }
 
 module.exports = router;
