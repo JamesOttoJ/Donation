@@ -18,6 +18,7 @@ var db = new sqlite3.Database(dbFilePath);
 
 var app = express();
 var port = 3003
+const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'Views'));
@@ -49,6 +50,14 @@ app.use(function(err, req, res, next) {
     res.render('error');
 });
 
+app.get('/Form2', function(req, res, next) {
+    res.sendFile(__dirname + '/Donation/public/Form2.html')
+});
+
+app.get('/Form3', function(req, res, next) {
+    res.sendFile(__dirname + '/Donation/public/Form3.html')
+});
+
 // http://expressjs.com/en/starter/basic-routing.html
 // app.get('/Donations', function(req, res) {
 //     res.sendFile(__dirname + '/public/Donations.html');
@@ -56,7 +65,21 @@ app.use(function(err, req, res, next) {
 
 // https://www.npmjs.com/package/sqlite3
 
+process.on('SIGINT', () => {
+    db.close((err) => {
+        if (err) {
+            return console.error(err.message);
+        }
+        console.log("Closed database");
+    });
+    server.close(() => {
+        console.log('Closed out remaining connections');
+        process.exit(0);
+    });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
-
+    setTimeout(() => {
+        console.error('Could not close connections in time, forcefully shutting down');
+        process.exit(1);
+    }, 10000);
+});
 module.exports = app;
