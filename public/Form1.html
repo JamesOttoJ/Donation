@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Form Test</title>
-    <link rel="stylesheet" href="stylesheets/Style.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Form1 Test</title>
+    <link rel="stylesheet" href="./stylesheets/Style.css">
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,18 +18,14 @@
       <form id="DonationForm"><!-- action="/Donations" method="post"-->
         <div>
           <label><span>Phone Number <span class="required">*</span></span><input type="text" class="tel-number-field" value="" maxlength="3" id="PNumber1"/>-<input type="text" class="tel-number-field" value="" maxlength="3" id="PNumber2"/>-<input type="text" class="tel-number-field1" value="" maxlength="4" id="PNumber3"/></label>
-          <button id="FormSubmit1" >Submit</button><!--type="submit" formaction"/Donations" formmethod"post"-->
+          <p>Phone number disclaimer</p>
+          <button type="button" id="FormSubmit1">Submit</button>
+          <button type="reset" id="FormReset">Reset</button><!--type="submit" formaction"/Donations" formmethod"post"-->
         </div>
       </form>
     </div>
-    <div id="tbl">
-
-    </div>
-    <div id="test">
-    
-    </div>
   </body>
-  <script src="javascripts/Form1Client.js"></script>
+  <script src="./javascripts/Form1Client.js"></script>
   <script>
   
   </script>

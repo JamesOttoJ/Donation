@@ -10,9 +10,13 @@ var dbFilePath = path.join(__dirname, '/../db/DonationDatabase.sqlite3');
 var exists = fs.existsSync(dbFilePath);
 var db = new sqlite3.Database(dbFilePath);
 
+// router.use(express.static(path.join(__dirname, 'public')));
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
+    // console.log(res.phoneNumber);
     res.render('index', { title: 'Express' });
+    // res.sendFile(path.join(__dirname, '/../public/index.html'));
 });
 
 module.exports = router;

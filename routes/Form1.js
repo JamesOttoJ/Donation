@@ -11,7 +11,7 @@ var exists = fs.existsSync(dbFilePath);
 let db = new sqlite3.Database(dbFilePath, sqlite3.OPEN_READWRITE);
 // let sql = "SELECT DonorID FROM Donations";
 
-router.use(express.static(path.join(__dirname, '/../public/Donations.html')));
+router.use(express.static(path.join(__dirname + '/../public/Form1.html')));
 
 // router.post('/', function(req, res) {
 //     console.log('Got a POST request')
@@ -20,39 +20,53 @@ router.use(express.static(path.join(__dirname, '/../public/Donations.html')));
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    res.send('Donations Page');
-    console.log('Donations opened');
+    res.sendFile(__dirname + '/../public/Form1.html');
+    console.log('Form1 opened');
 });
 
 router.post('/', jsonParser, function(req, res) {
     console.log(req.body);
     console.log('Got a POST req');
+    // const DonationGet = new XMLHttpRequest();
+    // console.log("New http request");
+
 
     // if the database does not exist, create it, otherwise print records to console
     if (!exists) {
-
         console.log("Table not found");
     } else {
-
-        res.status(200).end();
-
         NumberExists = false
-        db.all("SELECT * FROM Donations WHERE PhoneNumber =" + PhoneNumber + ";", function(err, rows) {
-            if (rows != null || rows != []) {
-                NumberExists = true
-                return NumberExists
+        db.serialize(() => {
+            db.all("SELECT PhoneNumber FROM DonorData WHERE PhoneNumber =" + req.body.PhoneNumber + ";", function(err, row) {
+                // console.log(row);
+                // console.log(req.body.PhoneNumber);
+                // console.log(err);
+                // console.log(Number(row) === 0);
+                // res.redirect(302, '/../');
+                // res.end();
+                if (Number(row) !== 0) {
+                    console.log("Number Found in table");
+                    console.log("Form3");
+                    return res.redirect(302, '../Form3');
+                } else {
+                    console.log("Number not found in table");
+                    console.log("Form2");
+                    return res.redirect(302, '../Form2');
+                    // res.writeHead(302, { Location: "../Form2" });
+                    // res.sendFile("/../public/Form2.html");
+                };
+            });
+
+            // console.log(NumberExists);
+            /*if (NumberExists) {
+                console.log("Form2");
+                res.send({ err: 0, redirectUrl: "/Form2" });
             } else {
-                NumberExists = false
-                return NumberExists
-            };
+                console.log("Form3");
+                res.send({ err: 0, redirectUrl: "/Form3" });
+            };*/
+            // res.status(200).end();
         });
-        if (NumberExists) {
-            DonationGet.open("GET", "/Form2");
-            DonationGet.send(null);
-        } else {
-            DonationGet.open("GET", "/Form3");
-            DonationGet.send(null);
-        };
     };
 });
 
