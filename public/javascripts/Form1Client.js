@@ -15,6 +15,8 @@ const DonationForm = document.getElementById("DonationForm");
 const Button1 = document.getElementById('FormSubmit1');
 
 Button1.addEventListener('click', function(event) {
+    event.preventDefault();
+
     // var PhoneNumber = document.getElementById("PNumber1") + document.getElementById("PNumber2") + document.getElementById("PNumber3");
     const PhoneNumber = document.getElementById("PNumber1").value + document.getElementById("PNumber2").value + document.getElementById("PNumber3").value;
     console.log(document.getElementById("PNumber1").value);
@@ -25,7 +27,9 @@ Button1.addEventListener('click', function(event) {
 
     DonationPost.open('post', '/Form1');
     DonationPost.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    DonationPost.setRequestHeader("followAllRedirects", "true");
     DonationPost.send(JSON.stringify({
-        'PhoneNumber': PhoneNumber
+        'PhoneNumber': PhoneNumber,
+        'Form': 1
     }));
 });

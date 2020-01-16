@@ -20,14 +20,14 @@ var path = require('path');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    Form3 = path.resolve(path.join(__dirname + '/../public/Form3.html'));
-    res.sendFile(Form3);
-    console.log('Form3 opened');
+    res.send('Form3');
+    //res.sendFile(__dirname + '/../public/Form3.html');
+    console.log('Form1 opened');
     // console.log(path.resolve(path.join(__dirname + '/../public/Form3.html')));
     // res.sendFile(path.resolve(path.join(__dirname + '/../public/Form3.html')));
     // res.redirect(301, "../");
     // res.send("Form3");
-    // res.end();
+    res.status(200).end();
 });
 
 module.exports = router;

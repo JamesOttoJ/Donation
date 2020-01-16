@@ -20,7 +20,16 @@ router.use(express.static(path.join(__dirname + '/../public/Form1.html')));
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-    res.sendFile(__dirname + '/../public/Form1.html');
+    console.log(req.body.Form);
+    if (req.body.Form === 1) {
+        res.send('loading');
+    } else if (req.body.Form === 2) {
+        res.sendFile(__dirname + '/../public/Form2.html');
+    } else if (req.body.Form === 3) {
+        res.sendFile(__dirname + '/../public/Form3.html');
+    } else {
+        res.sendFile(__dirname + '/../public/Form1.html');
+    }
     console.log('Form1 opened');
 });
 
@@ -47,11 +56,12 @@ router.post('/', jsonParser, function(req, res) {
                 if (Number(row) !== 0) {
                     console.log("Number Found in table");
                     console.log("Form3");
-                    return res.redirect(302, '../Form3');
+                    req.body.Form = 3
+                    return res.redirect('/Form1');
                 } else {
                     console.log("Number not found in table");
                     console.log("Form2");
-                    return res.redirect(302, '../Form2');
+                    return res.redirect('/Form2');
                     // res.writeHead(302, { Location: "../Form2" });
                     // res.sendFile("/../public/Form2.html");
                 };
