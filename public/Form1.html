@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Form1 Test</title>
+    <link rel="stylesheet" href="./stylesheets/Style.css">
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="shortcut icon" href="images/favicon.ico">-->
+
+    <!-- import the webpage's client-side javascript file -->
+
+  </head>
+  <body>
+    <div class="form-style-2">
+      <div class ="form-style-2-heading">Personal Information</div>
+      <form id="DonationForm" action="/Form1" method="post"><!-- action="/Donations" method="post"-->
+        <div>
+          <label><span>Phone Number <span class="required">*</span></span><input type="text" class="tel-number-field" value="" maxlength="3" id="PNumber1"/>-<input type="text" class="tel-number-field" value="" maxlength="3" id="PNumber2"/>-<input type="text" class="tel-number-field1" value="" maxlength="4" id="PNumber3"/></label>
+          <p>Phone number disclaimer</p>
+          <button type="button" id="FormSubmit1">Submit</button>
+          <button type="reset" id="FormReset">Reset</button><!--type="submit" formaction"/Donations" formmethod"post"-->
+        </div>
+      </form>
+    </div>
+  </body>
+  <script src="./javascripts/Form1Client.js"></script>
+  <script>
+  
+  </script>
+</html>

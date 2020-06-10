@@ -48,3 +48,8 @@ Button.addEventListener('click', function(event) {
         alert("That input is not valid");
     }
 });
+
+Button1.addEventListener('click', function(event) {
+    var PhoneNumber = document.getElementById("PNumber1") + document.getElementById("PNumber2") + document.getElementById("PNumber3")
+    console.log(PhoneNumber);
+})
