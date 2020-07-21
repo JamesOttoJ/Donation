@@ -3,7 +3,7 @@ DonationID INTEGER PRIMARY KEY,
 DonorID INTEGER,
 CategoryName TEXT,
 DonationUnits INTEGER,
-DonationTotalDollars DOUBLE,
+DonationTotalDollars FLOAT,
 StoreID INTEGER,
 DateTime DATETIME DEFAULT current_timestamp);
 

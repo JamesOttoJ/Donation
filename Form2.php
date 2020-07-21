@@ -11,21 +11,19 @@
   <body>
     <div class="form-style-2">
       <div class ="form-style-2-heading">Personal Information</div>
-        <form id="DonationForm"><!-- action="/Donations" method="post"-->
+        <form id="DonationForm" action="../PHP/Form2.php" method="post">
           <div>
             <div>
               <label for="field1"><span>Name <span class="required">*</span></span><input type="text" id="FName" class="input-field-name" name="field1" value="" placeholder="First"/>
               <input type="text" id="LName" class="input-field-name" name="field1" value="" placeholder="last"/>
             </div><div>
-              <label><span>Phone Number <span class="required">*</span></span><input type="number" class="tel-number-field" name="tel_no_1" value="" maxlength="3" />-<input type="number" class="tel-number-field" name="tel_no_2" value="" maxlength="3"  />-<input type="number" class="tel-number-field1" name="tel_no_3" value="" maxlength="4" /></label>
-            </div><div>
               <label for="field2"><span>Email <span class="required">*</span></span><input type="email" id="EMail" class="input-field" name="field2" value=""/>
             </div><div>
-              <input type="text" id="CategoryName" placeholder="Catagory Name" disabled value="0"/>
+              <input type="text" id="CategoryName" placeholder="Catagory Name"/>
               <input type="number" id="DonationUnits" placeholder="Donation Units"/>
               <input type="number" id="DonationTotalDollars" placeholder="Donation Total Dollars"/>
             </div><div>
-              <button id="FormSubmit1" disabled>Submit</button><!--type="submit" formaction"/Donations" formmethod"post"-->
+              <button id="FormSubmit1" disabled>Submit</button>
             </div><div>
               <input type="checkbox" id="Exclude" Name="Exclude">
               <label for="Exclude">I would like to be excluded from restating aditional content</label>
@@ -35,8 +33,4 @@
       </div>
     </div>
   </body>
-  <script src="javascripts/Client.js"></script>
-  <script>
-  
-  </script>
 </html>

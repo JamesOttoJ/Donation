@@ -7,10 +7,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--<link rel="shortcut icon" href="images/favicon.ico">-->
-
-    <!-- import the webpage's client-side javascript file -->
-
   </head>
   <body>
     <div class="form-style-2">
@@ -18,15 +14,7 @@
       <form id="DonationForm"><!-- action="/Donations" method="post"-->
         <div>
           <ul>
-          <li>
-          <label for="field1"><span>Name <span class="required">*</span></span><input type="text" id="FName" class="input-field-name" name="field1" value="" placeholder="First"/>
-          <input type="text" id="LName" class="input-field-name" name="field1" value="" placeholder="last"/>
-          </li><li>
-          <label><span>Phone Number <span class="required">*</span></span><input type="number" class="tel-number-field" name="tel_no_1" value="" maxlength="3" />-<input type="number" class="tel-number-field" name="tel_no_2" value="" maxlength="3"  />-<input type="number" class="tel-number-field1" name="tel_no_3" value="" maxlength="4" /></label>
-          </li><li>
-          <label for="field2"><span>Email <span class="required">*</span></span><input type="email" id="EMail" class="input-field" name="field2" value=""/>
-          </li>
-          </div><div>
+          <div>
           <input type="text" id="CategoryName" placeholder="Catagory Name"/>
           <input type="number" id="DonationUnits" placeholder="Donation Units"/>
           <input type="number" id="DonationTotalDollars" placeholder="Donation Total Dollars"/>
@@ -39,8 +27,4 @@
         </div>
       </form>
   </body>
-  <script src="javascripts/Client.js"></script>
-  <script>
-  
-  </script>
 </html>

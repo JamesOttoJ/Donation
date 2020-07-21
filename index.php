@@ -13,8 +13,7 @@
   <nav>
     <p>Links Around</p>
     <ul>
-      <li><a href="../../index.html">Go Back</a></li>
-      <li><a href="/Form1">Stable code</a></li>
+      <li><a href="./Form1.php">Stable code</a></li>
     </ul>
   </nav>
 
